@@ -10,6 +10,6 @@ namespace Plugins_with_MEF
     [Export(typeof(IPlugin))]
     public class Plugin1 : IPlugin
     {
-        public string id { get { return "Plugin 1"; } set { } }
+        public string id { get { return "Plugin 1"; } }
     }
 }

@@ -20,10 +20,14 @@ namespace Plugins_with_MEF
             AssemblyCatalog catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
             CompositionContainer container = new CompositionContainer(catalog);
 
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Form1 form = new Form1();
+
+            container.ComposeParts(form);
+
+            Application.Run(form);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace Plugins_with_MEF
 {
     public interface IPlugin
     {
-        string id { get; set; }
+        string id { get; }
     }
 }
