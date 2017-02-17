@@ -3,8 +3,8 @@
 ### What is this repository for? ###
 
 Quick demonstration of;
-* Exporting types
-* Exporting methods
-* Exporting with metadata
+- Exporting types
+- Exporting methods
+- Exporting with metadata
 
 ######################
