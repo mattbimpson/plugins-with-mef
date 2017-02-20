@@ -28,3 +28,5 @@ Quick demonstration of:
 
 DirectoryCatalog catalog = new DirectoryCatalog("Plugin dropin folder", "*.dll");
 ```
+
+* Try this out by building the solution and copying "PluginDll.dll" into the "Plugin dropin folder"
