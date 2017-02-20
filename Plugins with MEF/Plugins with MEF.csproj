@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class plugins\Plugin3.cs" />
-    <Compile Include="DirectoryCatalogExample.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

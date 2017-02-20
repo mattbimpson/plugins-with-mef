@@ -11,6 +11,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Reflection;
+using System.ComponentModel.Composition.Primitives;
 
 namespace Plugins_with_MEF
 {
@@ -27,7 +28,7 @@ namespace Plugins_with_MEF
 
         //[ImportMany]
         private IEnumerable<Lazy<IPlugin, Dictionary<string, object>>> importsWithMetaData;
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -70,11 +71,23 @@ namespace Plugins_with_MEF
 
         private void button5_Click(object sender, EventArgs e)
         {
-            // Load the drop ins from a new class - we don't want to try and load our imports declared above
-            DirectoryCatalogExample example = new DirectoryCatalogExample();
-            string loadedPlugin = example.LoadPluginsFromFolder();
+            string path = Assembly.GetExecutingAssembly().Location;
+            DirectoryCatalog catalog = new DirectoryCatalog(Path.GetFullPath(Path.Combine(path, @"..\..\..\Plugin dropin folder")), "*.dll");
+            CompositionContainer container = new CompositionContainer(catalog);
 
-            lblLoadedPlugins.Text += loadedPlugin + Environment.NewLine;
+            catalog.Refresh();
+
+            // var dll = ReflectionModelServices.GetPartType(catalog.First()).Value.Assembly;
+
+            foreach (ComposablePartDefinition part in catalog)
+            {
+                string name = part.ExportDefinitions.First().Metadata["Name"].ToString();
+
+                if (!lblLoadedPlugins.Text.Contains(name))
+                {
+                    lblLoadedPlugins.Text += name;
+                }
+            }
         }
     }
 }
