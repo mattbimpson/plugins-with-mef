@@ -7,5 +7,6 @@ Quick demonstration of:
 * Exporting types
 * Exporting methods
 * Exporting with metadata
+* Picking up plugins loaded into a folder
 
 ######################
