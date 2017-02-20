@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.IO;
+using System.Reflection;
 
 namespace Plugins_with_MEF
 {
@@ -22,7 +25,7 @@ namespace Plugins_with_MEF
         [Import("SaySomething")]
         private Func<string> importedByName;
 
-        [ImportMany]
+        //[ImportMany]
         private IEnumerable<Lazy<IPlugin, Dictionary<string, object>>> importsWithMetaData;
 
         public Form1()
@@ -63,6 +66,15 @@ namespace Plugins_with_MEF
         private void button4_Click(object sender, EventArgs e)
         {
             MessageBox.Show(importsWithMetaData.First(m => (string)m.Metadata["label"] == "label 3").Value.id);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Load the drop ins from a new class - we don't want to try and load our imports declared above
+            DirectoryCatalogExample example = new DirectoryCatalogExample();
+            string loadedPlugin = example.LoadPluginsFromFolder();
+
+            lblLoadedPlugins.Text += loadedPlugin + Environment.NewLine;
         }
     }
 }
