@@ -13,6 +13,7 @@ Quick demonstration of:
 
 # Basics #
 
+* Open "Plugins with MEF\Plugins with MEF.sln" in Visual Studio
 * Export types or methods with [Export], and import them using [ImportMany] along with an IEnumerable of your type.
 * The folder "Type export plugins" contains types that are exported using the [Export(typeof(<interface>))] attribute.
 * Named exports can be done using [Export("named export")], along with [Import("named export")]
